@@ -7,13 +7,13 @@ function getComputerChoice()
     switch(choice)
     {
         case 0:
-            return "Rock"
+            return "rock"
             break;
         case 1:
-            return "Paper"
+            return "paper"
             break;
         case 2:
-            return "Scissors"
+            return "scissors"
             break;
         default:
             throw new Error("Undefined choice")
@@ -32,7 +32,7 @@ function getPlayerChoice()
         if(goodInput)
         {
             keepGoing = false
-            return capitalize(userInput)
+            return userInput
         }
     }
 }
@@ -56,20 +56,20 @@ function playRound(){
     let win = false
     switch (playerChoice) 
     {
-        case "Rock":
-            if(ComputerChoice == "Scissors")
+        case "rock":
+            if(computerChoice == "scissors")
             {
                 win = true
             }
             break;
-        case "Paper":
-            if(computerChoice == "Rock")
+        case "paper":
+            if(computerChoice == "rock")
             {
                 win = true
             }
             break;
-        case "Scissors":
-            if(computerChoice == "Paper")
+        case "scissors":
+            if(computerChoice == "paper")
             {
                 win = true
             }
@@ -83,6 +83,22 @@ function playRound(){
     }
     else
     {
+        computerScore++
         console.log("You Lose... " + computerChoice + " beats " + playerChoice)
     }
 }
+
+function playGame()
+{
+    playRound()
+    playRound()
+    playRound()
+    playRound()
+    playRound()
+
+    console.log("PlayerScore: " + playerScore)
+    console.log("Computer Score: " + computerScore)
+}
+
+
+playGame()
