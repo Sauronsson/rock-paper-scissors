@@ -1,0 +1,49 @@
+body, html {
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+button {
+    color:#F9FAF8;
+    background-color:#3882F6;
+    border-radius:8px;
+    padding: 4px 20px;
+    margin: 5px;
+    border:none;
+}
+
+.pressed {
+    background-color: rgb(0, 0, 156);
+}
+
+.actions {
+    display:flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+.stats {
+    display: flex;
+    margin-top: 2em;
+    gap: 2em
+
+}
+
+.score {
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    border: 1px;
+    border-color: black;
+}
+
+.gameCount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

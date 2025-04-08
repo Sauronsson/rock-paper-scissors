@@ -88,17 +88,17 @@ function playRound(){
     }
 }
 
-function playGame()
-{
-    playRound()
-    playRound()
-    playRound()
-    playRound()
-    playRound()
+//Setup functions for game
+const div = document.querySelector(".actions")
 
-    console.log("PlayerScore: " + playerScore)
-    console.log("Computer Score: " + computerScore)
-}
-
-
-playGame()
+// Logic to make button flash on click
+div.addEventListener("mousedown", (event) => {
+    if(event.target.tagName === "BUTTON"){
+        event.target.setAttribute("class", "pressed")
+    }
+})
+div.addEventListener("mouseup", (event) => {
+    if(event.target.tagName === "BUTTON"){
+        event.target.classList.remove("pressed")
+    }
+})
