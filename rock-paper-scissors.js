@@ -43,33 +43,32 @@ function capitalize(aString)
     return lowerCase.charAt(0).toUpperCase() + lowerCase.substring(1,lowerCase.length-1)
 }
 
-function playRound(){
-    let playerChoice = getPlayerChoice()
+function playRound(playerChoice){
+    let result = 0 // 0 == tie, 1 == win, -1 == loss
     let computerChoice = getComputerChoice()
 
     if(playerChoice == computerChoice)
     {
-        console.log("Tie Game! You both chose " + playerChoice)
-        return
+        return result
     }
 
     let win = false
     switch (playerChoice) 
     {
         case "rock":
-            if(computerChoice == "scissors")
+            if(computerChoice === "scissors")
             {
                 win = true
             }
             break;
         case "paper":
-            if(computerChoice == "rock")
+            if(computerChoice === "rock")
             {
                 win = true
             }
             break;
         case "scissors":
-            if(computerChoice == "paper")
+            if(computerChoice === "paper")
             {
                 win = true
             }
@@ -78,18 +77,29 @@ function playRound(){
 
     if(win)
     {
-        playerScore++
-        console.log("You win! " + playerChoice + " beats " + computerChoice)
+        return 1
     }
     else
     {
-        computerScore++
-        console.log("You Lose... " + computerChoice + " beats " + playerChoice)
+        return -1
     }
 }
 
 //Setup functions for game
 const div = document.querySelector(".actions")
+
+// Logic for playing rock paper scissors
+div.addEventListener("click", (event) => {
+    console.log("hi")
+    if(event.target.tagName === "BUTTON"){
+        result = playRound(event.target.id)
+
+        gamesPlayed = document.querySelector("#gamesPlayed")
+        gamesPlayed.textContent = Number(gamesPlayed.textContent) + 1
+        playerScore = document.querySelector("#playerScore")
+        playerScore.textContent = Number(playerScore.textContent) + result
+    }
+})
 
 // Logic to make button flash on click
 div.addEventListener("mousedown", (event) => {
