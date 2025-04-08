@@ -49,7 +49,7 @@ function playRound(playerChoice){
 
     if(playerChoice == computerChoice)
     {
-        return result
+        return {result, playerChoice, computerChoice}
     }
 
     let win = false
@@ -77,11 +77,13 @@ function playRound(playerChoice){
 
     if(win)
     {
-        return 1
+        result = 1
+        return {result, playerChoice, computerChoice}
     }
     else
     {
-        return -1
+        result = -1
+        return {result, playerChoice, computerChoice}
     }
 }
 
@@ -97,7 +99,12 @@ div.addEventListener("click", (event) => {
         gamesPlayed = document.querySelector("#gamesPlayed")
         gamesPlayed.textContent = Number(gamesPlayed.textContent) + 1
         playerScore = document.querySelector("#playerScore")
-        playerScore.textContent = Number(playerScore.textContent) + result
+        playerScore.textContent = Number(playerScore.textContent) + result.result
+        playerChoice = document.querySelector("#playerChoice")
+        playerChoice.textContent = result.playerChoice
+        computerChoice = document.querySelector("#computerChoice")
+        computerChoice.textContent = result.computerChoice
+
     }
 })
 
